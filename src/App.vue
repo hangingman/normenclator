@@ -1,30 +1,16 @@
 <template>
-  <img
-    alt="Vue logo"
-    src="./assets/logo.png"
-  >
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <BaseUI/>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import HelloWorld from "./components/HelloWorld.vue";
+import BaseUI from "./components/BaseUI.vue";
+//import 'jquery-ui-dist/jquery-ui.theme.css'
 
 @Options({
   components: {
-    HelloWorld,
+    BaseUI,
   },
 })
 export default class App extends Vue {}
 </script>
-
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
