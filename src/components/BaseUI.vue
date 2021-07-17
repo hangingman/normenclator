@@ -1,22 +1,26 @@
 <template>
-  <div class="header">
-    Fixed header
-  </div>
-  <div class="wrapper">
-    <div class="inner-wrapper">
-      <div ref="leftPaneRef" class="left pane">Left</div>
-      <div class="center pane">
-        <div class="inner">
-          <div class="top pane">
-            <div ref="topPaneRef" class="top-content">Center top</div>
-          </div>
-          <div ref="bottomRef" class="bottom">
-            Center bottom
+  <div class="window">
+    <header class="toolbar toolbar-header">
+      Fixed header
+    </header>
+    <div class="window-content">
+      <div class="pane-group">
+        <div ref="leftPaneRef" class="pane left">Left</div>
+        <div class="pane center">
+          <div class="inner">
+            <div class="pane">
+              <div ref="topPaneRef" class="top-content">Center top</div>
+            </div>
+            <div ref="bottomRef" class="bottom">
+              Center bottom
+            </div>
           </div>
         </div>
+        <div ref="rightPaneRef" class="pane right">Right</div>
       </div>
-      <div ref="rightPaneRef" class="right pane">Right</div>
     </div>
+    <footer class="toolbar toolbar-footer">
+    </footer>
   </div>
 </template>
 
@@ -78,72 +82,13 @@ export default defineComponent({
 </script>
 
 <style scoped lang="css">
-html,
-body {
-  height: 100%;
-}
-
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 20px;
-  background-color: moccasin;
-}
-
-.wrapper {
-  position: absolute;
-  top: 21px;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: fuchsia;
-}
-
-.inner-wrapper,
-.center.pane .inner {
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  height: 100%;
-}
-
-.pane {
-  display: table-cell;
-}
-
-.left.pane {
-  background-color: olivedrab;
+.pane.left {
   width: 25%;
+  flex: 0 1 auto;
 }
 
-.center.pane {
-  background-color: lightblue;
-}
-
-.center.pane .inner .top,
-.center.pane .inner .bottom {
-  display: table-row;
-}
-
-.center.pane .inner .top {
-  background-color: lightcoral;
-}
-
-.center.pane .inner .bottom {
-  background-color: orange;
-  height: 100%;
-  width: 100%;
-}
-
-.right.pane {
-  background-color: #999;
+.pane.right {
   width: 25%;
-}
-
-.top-content {
-  width: 100%;
-  height: 100%;
+  flex: 0 1 auto;
 }
 </style>
