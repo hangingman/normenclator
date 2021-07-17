@@ -21,8 +21,7 @@
 </template>
 
 <script lang="ts">
-import {Vue} from 'vue-class-component'
-import {defineComponent, ref, onMounted, nextTick} from 'vue'
+import {defineComponent, ref, onMounted} from 'vue'
 import $ from "jquery";
 import "jquery-ui";
 import "jquery-ui-css";
@@ -32,34 +31,46 @@ import "jquery-ui-css";
 
 export default defineComponent({
   setup() {
+    function setWidthInPercent(element: JQuery<HTMLElement>) {
+      const percentageWidth = (element.width()!! / element.parent().width()!!) * 100
+      element.width(percentageWidth + '%')
+    }
+
     const leftPaneRef = ref<HTMLDivElement>();
     const topPaneRef = ref<HTMLDivElement>();
-    const bottomRef = ref<HTMLDivElement>();
     const rightPaneRef = ref<HTMLDivElement>();
 
     onMounted(() => {
       const $leftPane = $(leftPaneRef.value!!);
       const $topPane = $(topPaneRef.value!!);
-      const $bottom = $(bottomRef.value!!);
       const $rightPane = $(rightPaneRef.value!!);
+
       $leftPane.resizable({
-        handles: "e, w"
+        handles: "e, w",
+        stop: (event, ui) => {
+          setWidthInPercent(ui.element)
+        }
       });
       $topPane.resizable({
-        handles: "n, s"
-      });
-      $bottom.resizable({
-        handles: "n, s"
+        handles: "s",
+        stop: (event, ui) => {
+          ui.element.width("")
+        }
       });
       $rightPane.resizable({
-        handles: "e, w"
+        handles: "e, w",
+        resize: (event, ui) => {
+          ui.position.left = 0
+        },
+        stop: (event, ui) => {
+          setWidthInPercent(ui.element)
+        }
       });
     })
 
     return {
       leftPaneRef
       , topPaneRef
-      , bottomRef
       , rightPaneRef
     }
   },
