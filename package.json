@@ -1,8 +1,9 @@
 {
   "name": "nomenclator",
   "version": "0.1.0",
-  "description": "5chブラウザ",
-  "main": "dist/main.js",
+  "description": "5chブラウザ?",
+  "author": "idiotpanzer@gmail.com",
+  "main": "electron/main.js",
   "scripts": {
     "start": "electron ./electron/main.js",
     "build:dev": "vue-cli-service build",

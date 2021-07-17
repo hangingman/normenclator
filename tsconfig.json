@@ -1,33 +1,49 @@
 {
   "compilerOptions": {
-    /* Basic Options */
-    "target": "ES2020",
-    "module": "es2020",
-    "lib": [
-      "DOM",
-      "ES2020"
-    ],
-    "jsx": "react",
-    "sourceMap": true,
-    "outDir": "./dist",
-    /* Strict Type-Checking Options */
+    "target": "esnext",
+    "module": "esnext",
     "strict": true,
-    /* Additional Checks */
-    /* Module Resolution Options */
+    "jsx": "preserve",
+    "importHelpers": true,
     "moduleResolution": "node",
-    "esModuleInterop": true,
-    /* Advanced Options */
+    "experimentalDecorators": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types",
+      "./@types"
+    ],
+    "types": [
+      "webpack-env",
+      "mocha",
+      "chai"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "jquery-ui": [
+        "node_modules/@types/jqueryui/index"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
   },
   "include": [
-    "src/**/*"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
-  "ts-node": {
-    "compilerOptions": {
-      "target": "ES2015",
-      "module": "CommonJS"
-      /* ts-node によるスクリプト実行時には module: CommonJS の指定が必要。 */
-    }
-  }
+  "exclude": [
+    "node_modules"
+  ]
 }
